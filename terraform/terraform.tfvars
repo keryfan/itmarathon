@@ -83,4 +83,4 @@ db_subnet_group_name = "rds-private-subnet-group"
 ################################################################################
 
 domain_name = "fast-cluster.xyz"
-certificate_arn = "arn:aws:acm:eu-central-1:165828186790:certificate/367de9a8-e85a-4224-8cab-b3fa8fe70740"
+certificate_arn = "arn:aws:acm:eu-central-1:165828186790:certificate/dc42ef4f-ba00-4a92-a24d-efee612cd4ae"

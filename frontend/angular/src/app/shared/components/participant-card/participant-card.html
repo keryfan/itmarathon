@@ -34,4 +34,13 @@
       (click)="onInfoClick()"
     />
   }
+  @if (isCurrentUserAdmin() && !isCurrentUser() && !participant().isAdmin) {
+    <app-icon-button
+      [iconName]="iconDelete"
+      [ariaLabel]="ariaLabelDelete"
+      (click)="onInfoClick()"
+      (mouseenter)="onDeleteHover($event.currentTarget)"
+      (mouseleave)="onDeleteLeave($event.currentTarget)"
+    />
+  }
 </span>

@@ -39,6 +39,7 @@ export class ParticipantCard {
   readonly showCopyIcon = input<boolean>(false);
   readonly userCode = input<string>('');
   readonly showInfoIcon = input<boolean>(false);
+  readonly showDeleteIcon = input<boolean>(false);
 
   readonly #popup = inject(PopupService);
   readonly #urlService = inject(UrlService);
@@ -58,6 +59,8 @@ export class ParticipantCard {
   public readonly ariaLabelCopy = AriaLabel.ParticipantLink;
   public readonly iconInfo = IconName.Info;
   public readonly ariaLabelInfo = AriaLabel.Info;
+  public readonly iconDelete = IconName.Delete;
+  public readonly ariaLabelDelete = AriaLabel.DeleteParticipant;
 
   @HostBinding('tabindex') tab = 0;
   @HostBinding('class.list-row') rowClass = true;
@@ -116,6 +119,23 @@ export class ParticipantCard {
   }
 
   public onCopyLeave(target: EventTarget | null): void {
+    if (target instanceof HTMLElement) {
+      this.#popup.hide(target);
+    }
+  }
+
+  public onDeleteHover(target: EventTarget | null): void {
+    if (target instanceof HTMLElement) {
+      this.#popup.show(
+        target,
+        PopupPosition.Center,
+        { message: 'Delete user', type: MessageType.Info },
+        true
+      );
+    }
+  }
+
+  public onDeleteLeave(target: EventTarget | null): void {
     if (target instanceof HTMLElement) {
       this.#popup.hide(target);
     }

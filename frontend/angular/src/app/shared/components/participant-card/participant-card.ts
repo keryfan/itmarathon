@@ -11,6 +11,7 @@ import { tap } from 'rxjs';
 import { IconButton } from '../icon-button/icon-button';
 import {
   AriaLabel,
+  DeleteRoomUser,
   IconName,
   MessageType,
   NavigationLinkSegment,
@@ -19,6 +20,7 @@ import {
 } from '../../../app.enum';
 import { PopupService } from '../../../core/services/popup';
 import { copyToClipboard } from '../../../utils/copy';
+import { deleteRoomUser } from '../../../utils/delete';
 import { UrlService } from '../../../core/services/url';
 import { ParticipantInfoModal } from '../../../room/components/participant-info-modal/participant-info-modal';
 import { ModalService } from '../../../core/services/modal';
@@ -95,6 +97,23 @@ export class ParticipantCard {
       },
       false
     );
+  }
+
+  public async deleteRoomUser(): Promise<void> {
+    const host = this.#host.nativeElement;
+    const id = this.participant().id;
+    const code = this.participant().userCode;
+
+    if (!id) {
+      this.#popup.show(
+        host,
+        PopupPosition.Right,
+        { message: DeleteRoomUser.Error, type: MessageType.Error },
+        false
+      );
+
+      return;
+    }
   }
 
   public onInfoClick(): void {

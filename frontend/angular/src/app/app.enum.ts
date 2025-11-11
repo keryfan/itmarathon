@@ -256,6 +256,11 @@ export const enum PersonalLink {
   Info = 'Copy Personal Link',
 }
 
+export const enum DeleteRoomUser {
+  Success = 'User deleted!',
+  Error = 'User was not deleted. Try again.',
+}
+
 export const enum Endpoint {
   rooms = '/api/rooms',
   users = '/api/users',

@@ -7,6 +7,7 @@ import { RoomService } from './room';
 import { ToastService } from '../../core/services/toast';
 import { MessageType, ToastMessage } from '../../app.enum';
 import type { User } from '../../app.models';
+import { deleteRoomUser } from '../../utils/delete';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class UserService {
   readonly #toasterService = inject(ToastService);
 
   readonly #userCode = signal<string>('');
+  //readonly #userId = signal<number>(0);
   readonly #users = signal<User[]>([]);
 
   public readonly userCode = this.#userCode.asReadonly();

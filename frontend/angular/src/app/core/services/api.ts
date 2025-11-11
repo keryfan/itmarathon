@@ -12,6 +12,7 @@ import {
   User,
   JoinRoomResponse,
   RoomUpdateRequest,
+  DeleteRoomUserResponse,
 } from '../../app.models';
 
 @Injectable({
@@ -51,6 +52,18 @@ export class ApiService {
     return this.#http.post<JoinRoomResponse>(
       `${this.#baseUrl}${Endpoint.users}`,
       userData,
+      { params, observe: 'response' }
+    );
+  }
+
+  public deleteUserFromRoom(
+    userId: number,
+    userCode: string
+  ): Observable<HttpResponse<DeleteRoomUserResponse>> {
+    const params = new HttpParams().set('userCode', userCode);
+
+    return this.#http.delete<DeleteRoomUserResponse>(
+      `${this.#baseUrl}${Endpoint.users}/${userId}`,
       { params, observe: 'response' }
     );
   }

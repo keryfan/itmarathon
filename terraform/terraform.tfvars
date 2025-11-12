@@ -74,3 +74,10 @@ db_engine            = "postgres"
 db_engine_version    = "17.5"
 db_instance_class    = "db.t3.micro"
 db_subnet_group_name = "rds-private-subnet-group"
+
+################################################################################
+# SSL variables
+################################################################################
+
+domain_name = "fast-cluster.xyz"
+certificate_arn = "arn:aws:acm:eu-central-1:165828186790:certificate/dc42ef4f-ba00-4a92-a24d-efee612cd4ae"
